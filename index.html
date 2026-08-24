@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRG WarnOverlay</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">TRG WARNOVERLAY</div>
+    <div class="live"><span id="liveDot"></span><span id="status">CONNECTING</span></div>
+  </header>
+
+  <main>
+    <div id="empty" class="empty">
+      <div class="check">✓</div>
+      <div>NO ACTIVE SEVERE WEATHER ALERTS</div>
+      <small>Monitoring the National Weather Service</small>
+    </div>
+    <section id="alerts" class="alerts" aria-live="polite"></section>
+  </main>
+
+  <div id="popup" class="popup hidden" role="alert">
+    <div id="popupBar" class="popup-bar"></div>
+    <div class="popup-inner">
+      <div class="popup-tag">NEW ALERT</div>
+      <div id="popupEvent" class="popup-event"></div>
+      <div id="popupArea" class="popup-area"></div>
+      <div id="popupTime" class="popup-time"></div>
+    </div>
+  </div>
+
+  <footer>
+    <span id="count">0 ACTIVE ALERTS</span>
+    <span>NATIONAL WEATHER SERVICE DATA</span>
+    <span id="updated">UPDATED --</span>
+  </footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
