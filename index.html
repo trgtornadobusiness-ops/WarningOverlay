@@ -3,34 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TRG WarnOverlay</title>
+<title>TRG WarningOverlay</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="app">
   <header class="topbar">
-    <div class="brand">TRG WARNOVERLAY</div>
+    <div class="brand">TRG WARNINGOVERLAY</div>
+    <nav class="tabs" aria-label="Overlay pages">
+      <a class="tab active" href="index.html">ACTIVE ALERTS</a>
+      <a class="tab" href="warnings.html">WARNINGS</a>
+    </nav>
     <div class="live"><span id="liveDot"></span><span id="status">CONNECTING</span></div>
   </header>
 
   <main>
-    <div id="empty" class="empty">
-      <div class="check">✓</div>
-      <div>NO ACTIVE SEVERE WEATHER ALERTS</div>
-      <small>Monitoring the National Weather Service</small>
-    </div>
-    <section id="alerts" class="alerts" aria-live="polite"></section>
+    <section id="overlay" class="overlay-shell">
+      <div id="empty" class="empty">
+        <div class="check">✓</div>
+        <div>NO ACTIVE SEVERE WEATHER ALERTS</div>
+        <small>Monitoring the National Weather Service</small>
+      </div>
+      <div id="activeAlert" class="active-alert hidden" aria-live="polite">
+        <div id="alertStripe" class="alert-stripe"></div>
+        <div class="alert-content">
+          <div class="alert-topline"><span id="alertBadge" class="alert-badge"></span><span id="alertIndex"></span></div>
+          <div id="alertEvent" class="alert-event"></div>
+          <div id="alertArea" class="alert-area"></div>
+          <div id="alertTime" class="alert-time"></div>
+          <div id="alertHeadline" class="alert-headline"></div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <div id="popup" class="popup hidden" role="alert">
-    <div id="popupBar" class="popup-bar"></div>
-    <div class="popup-inner">
-      <div class="popup-tag">NEW ALERT</div>
-      <div id="popupEvent" class="popup-event"></div>
-      <div id="popupArea" class="popup-area"></div>
-      <div id="popupTime" class="popup-time"></div>
+  <section id="newAlert" class="new-alert hidden" aria-live="assertive">
+    <div id="newStripe" class="new-stripe"></div>
+    <div class="new-inner">
+      <div class="new-label">NEW ALERT</div>
+      <div id="newEvent" class="new-event"></div>
+      <div id="newArea" class="new-area"></div>
+      <div id="newTime" class="new-time"></div>
     </div>
-  </div>
+  </section>
 
   <footer>
     <span id="count">0 ACTIVE ALERTS</span>
